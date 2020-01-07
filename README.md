@@ -28,7 +28,7 @@ GET /api/user
 Get /api/user/:id
 ```
 
-### Handle Undefined Reference
+### Handle Undefined References
 Use logical 'or' to handle undefined data specially when using the data to call other functions. You may handle the empty string in the recieving function
 ```
 // Get user object
@@ -37,7 +37,7 @@ const user = getUser(userId);
 // Store email in variable
 const userEmail = user.email;
 
-// Call a function using 
+// Call a function using the stored variable
 await storeEmail(userEmail);           
 
 // Causes Reference error
@@ -53,7 +53,7 @@ const user = getUser(userId);
 // store email or set to empty string if undefined
 const userEmail = user.email || '';
 
-// Call a function using the 
+// Call a function using the stored variable
 await storeEmail(userEmail);           
 ```
 
