@@ -27,6 +27,36 @@ GET /api/user
 // Get a single user by id
 Get /api/user/:id
 ```
+
+### Handle Undefined Reference
+Use logical 'or' to handle undefined data specially when using the data to call other functions. You may handle the empty string in the recieving function
+```
+// Get user object
+const user = getUser(userId);
+
+// Store email in variable
+const userEmail = user.email;
+
+// Call a function using 
+await storeEmail(userEmail);           
+
+// Causes Reference error
+                
+```
+
+Good
+
+```
+// Get user object
+const user = getUser(userId);
+
+// store email or set to empty string if undefined
+const userEmail = user.email || '';
+
+// Call a function using the 
+await storeEmail(userEmail);           
+```
+
 ### Validate Requests
 Perform validation on the data sent on request instead of checking it inside a function later.
 
