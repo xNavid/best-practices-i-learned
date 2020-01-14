@@ -81,6 +81,9 @@ req.check('email').notEmpty();
 // Do Stuff
 ```
 
+### Check Resource Ownership
+When performing an operation on data you should first check if the user trying to perform the action has permission to perform operations. Users who do not own a resource or have permission to a owned resource should not be able to access or perform operations through API unless it is part of the API functionality.
+
 ### Prefer Soft Delete
 Choose soft deleting resources, specially resources that are useful for the system or user might want restore.
 
@@ -96,12 +99,14 @@ Good
 ```
 User.updateOne({ id }).set({isDeleted: true})
 ```
+### Always Validate Data
+APIs should not rely on the front-end or other sources for valid data, even if you are sure the data is validated on the front-end side you should still validate the data which API recieves. This not only helps with scalability but improves security drastically.
 
 ### Use Modules to Avoid Reptition
 If the exact same code is being repeated multiple places or is being slightly modified, then it should be made to its own module.
 Instead of copy pasting same functions or slightly modifying the functions create a general service (module) from it and call it when required. For instance for using custom format date format, custom created file management, etc.
 
-### Store Shared Variables in A Config File
+### Store Shared Variables in a Config File
 If the same variable is used in or will be used in different endpoints then it should be stored in a custom config file where all endpoints call it. This will avoid reptition and confusion but most importantly makes the code scalable.
 
 ### Use Proper REST Method
